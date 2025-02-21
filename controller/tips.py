@@ -31,6 +31,13 @@ def get_tips():
         "title": tip.title,
         "weather_type": tip.weather_type,
         "details": tip.details,
-        "created_at": tip.created_at.isoformat()
+        "created_at": tip.created_at.isoformat(),
+        "user": {
+            "id": tip.user.id,
+            "name": tip.user.name,
+            "email": tip.user.email
+        }
     } for tip in tips]
+    
     return jsonify(tips_list)
+
