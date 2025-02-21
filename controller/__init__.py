@@ -13,3 +13,4 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 from controller.auth import *
+from controller.tips import *

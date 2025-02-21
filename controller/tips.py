@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt_identity, create_access_token
 from datetime import datetime
-from models import db, User, Tip
+from models import db
+from models.user import Tip
 from controller import app
 
 
