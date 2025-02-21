@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from controller import app
 from flask import request, jsonify
 from flask_bcrypt import Bcrypt

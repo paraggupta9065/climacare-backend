@@ -18,6 +18,7 @@ class User(db.Model):
     course_schedule = db.Column(db.String(100), nullable=False)
     accommodation_type = db.Column(db.String(100), nullable=False)
     activity_level = db.Column(db.Float, nullable=False)  # Store slider value
+    tips = db.relationship('Tip', backref='user', lazy=True)
 
     def __repr__(self):
         return f"<User {self.email}>"
@@ -37,7 +38,6 @@ class UserSchema(ma.Schema):
 
 user_schema = UserSchema()
 
-
 class Tip(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) 
@@ -45,3 +45,14 @@ class Tip(db.Model):
     weather_type = db.Column(db.String(50), nullable=False)
     details = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+class TipSchema(ma.SQLAlchemyAutoSchema):
+    user = fields.Nested(UserSchema) 
+    
+    class Meta:
+        model = Tip
+        include_fk = True  # Include Foreign Key
+        load_instance = True
+
+tip_schema = TipSchema()
+tips_schema = TipSchema(many=True)
