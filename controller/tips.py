@@ -26,9 +26,7 @@ def add_tip():
 
 @app.route("/get_tips", methods=["GET"])
 def get_tips():
-    verify_jwt_in_request()
-    user_id = get_jwt_identity()
-    tips = Tip.query.filter_by(user_id=user_id).all()
+    tips = Tip.query.all()
     tips_list = [{
         "title": tip.title,
         "weather_type": tip.weather_type,

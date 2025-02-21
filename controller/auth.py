@@ -1,3 +1,4 @@
+from datetime import datetime
 from controller import app
 from flask import request, jsonify
 from flask_bcrypt import Bcrypt
@@ -44,7 +45,7 @@ def login():
     if not user or not bcrypt.check_password_hash(user.password, data.get('password')):
         return jsonify({'message': 'Invalid credentials'}), 401
     
-    access_token = create_access_token(identity=user.email)
+    access_token = create_access_token(identity=user.email,expires_delta=datetime.timedelta(days=10))
     return jsonify({'data': {"access_token":access_token}}), 200
 
 
