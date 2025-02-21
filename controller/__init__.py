@@ -23,7 +23,7 @@ def auto_call_api():
             response = requests.get("https://climacare-backend.onrender.com/")
         except Exception as e:
             print("Error calling API:", e)
-        time.sleep(3)
+        time.sleep(15)
         
 threading.Thread(target=auto_call_api, daemon=True).start()
 

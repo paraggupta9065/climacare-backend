@@ -40,7 +40,7 @@ user_schema = UserSchema()
 
 class Tip(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(80), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) 
     title = db.Column(db.String(255), nullable=False)
     weather_type = db.Column(db.String(50), nullable=False)
     details = db.Column(db.Text, nullable=False)
