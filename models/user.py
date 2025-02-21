@@ -2,7 +2,7 @@ from models import db
 from marshmallow import ValidationError, fields
 from flask_marshmallow import Marshmallow
 from controller import app
-
+from datetime import datetime
 ma = Marshmallow(app)
 
 class User(db.Model):
@@ -36,3 +36,12 @@ class UserSchema(ma.Schema):
     activity_level = fields.Float(required=True)
 
 user_schema = UserSchema()
+
+
+class Tip(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(80), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    weather_type = db.Column(db.String(50), nullable=False)
+    details = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
