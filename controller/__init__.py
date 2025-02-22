@@ -29,3 +29,4 @@ def hello_world():
 
 from controller.auth import *
 from controller.tips import *
+from controller.ai import *
