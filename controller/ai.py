@@ -41,6 +41,57 @@ def gen_ai():
     context = {
         "weather_context": weather_data,
         "current_time": current_time,
+        "location":"Vit Bhopal",
+        'surrounding_info':{
+        "campus": {
+            "name": "VIT Bhopal University",
+            "location": {
+            "address": "Bhopal-Indore Highway, Kothrikalan, Sehore, Bhopal - 466114, Madhya Pradesh, India",
+            "latitude": 23.0258,
+            "longitude": 77.4280
+            },
+            "area_acres": 300,
+            "features": {
+            "playgrounds": 2,
+            "ponds": 1,
+            "academic_blocks": 1,
+            "laboratory_complexes": 1,
+            "hostel_blocks": {
+                "boys": 3,
+                "girls": 1
+            },
+            "under_construction": {
+                "academic_block_2": true,
+                "additional_hostel_blocks": true
+            }
+            }
+        },
+
+        "academic_buildings": [
+            {
+            "name": "Academic Block 1",
+            "status": "operational",
+            "area_sqm": 31180,
+            },
+            {
+            "name": "Academic Block 2",
+                "status": "operational",
+            },
+            {
+            "name": "Laboratory Complex",
+            "status": "operational",
+            "area_sqm": 7875.7,
+            "features": [
+                "advanced_laboratories"
+            ]
+            },
+            {
+            "name": "Architecture Block",
+            "status": "operational"
+            }
+        ],
+        },
+        
         "purpose": "Provide a concise 3-4 line response to the user's health-related question, incorporating their preferences and activity level while avoiding complex language.",
         "user_id": user.id,
         "user_info": {
