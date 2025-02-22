@@ -45,6 +45,8 @@ class Tip(db.Model):
     weather_type = db.Column(db.String(50), nullable=False)
     details = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    upvotes = db.Column(db.Integer, default=0, nullable=False)
+    downvotes = db.Column(db.Integer, default=0, nullable=False)
     
 class TipSchema(ma.SQLAlchemyAutoSchema):
     user = fields.Nested(UserSchema) 

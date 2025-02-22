@@ -30,4 +30,25 @@ def get_tips():
     tips = Tip.query.all()
     return tips_schema.jsonify(tips)  # Use Marshmallow to serialize
 
+@app.route("/tip/<int:tip_id>/upvote", methods=["POST"])
+def upvote_tip(tip_id):
+    tip = Tip.query.get(tip_id)
+    if not tip:
+        return jsonify({"error": "Tip not found"}), 404
 
+    tip.upvotes += 1
+    db.session.commit()
+
+    return jsonify({"message": "Upvoted successfully", "upvotes": tip.upvotes, "downvotes": tip.downvotes})
+
+
+@app.route("/tip/<int:tip_id>/downvote", methods=["POST"])
+def downvote_tip(tip_id):
+    tip = Tip.query.get(tip_id)
+    if not tip:
+        return jsonify({"error": "Tip not found"}), 404
+
+    tip.downvotes += 1
+    db.session.commit()
+
+    return jsonify({"message": "Downvoted successfully", "upvotes": tip.upvotes, "downvotes": tip.downvotes})
