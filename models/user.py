@@ -53,8 +53,14 @@ class TipSchema(ma.SQLAlchemyAutoSchema):
     
     class Meta:
         model = Tip
-        include_fk = True  # Include Foreign Key
+        include_fk = True 
         load_instance = True
 
 tip_schema = TipSchema()
 tips_schema = TipSchema(many=True)
+
+class Survey(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
