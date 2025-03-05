@@ -12,4 +12,7 @@ app.config['JWT_SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
 
 from models.user import User, user_schema
+from models.tips import Tip, tip_schema
+
+from models.survey import SurveyResponse, survey_response_schema
 

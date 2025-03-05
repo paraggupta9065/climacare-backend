@@ -3,8 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt_identity, create_access_token
 from datetime import datetime
 from models import db
-from models.user import Tip, User, tips_schema
+from models.tips import Tip, tips_schema
 from controller import app
+from models.user import User
 
 
 @app.route("/add_tip", methods=["POST"])

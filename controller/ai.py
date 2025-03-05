@@ -3,8 +3,10 @@ from flask_jwt_extended import jwt_required, get_jwt_identity, verify_jwt_in_req
 from google import genai
 import datetime
 from controller import app
-from models.user import Tip, User
 import requests
+
+from models.tips import Tip
+from models.user import User
 
 
 @app.route("/gen_ai", methods=["POST"])
