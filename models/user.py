@@ -63,4 +63,26 @@ class Survey(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    questions = db.Column(db.JSON, nullable=False)  # JSON: List of 5 text-based questions
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+class SurveyResponse(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    survey_id = db.Column(db.Integer, db.ForeignKey('survey.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    responses = db.Column(db.JSON, nullable=False)  # JSON: Dict with question index & answer
+    submitted_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+class SurveySchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Survey
+        load_instance = True
+
+class SurveyResponseSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = SurveyResponse
+        load_instance = True
+
+survey_schema = SurveySchema(many=True)
+survey_response_schema = SurveyResponseSchema(many=True)
+
