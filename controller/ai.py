@@ -61,8 +61,8 @@ def gen_ai():
                     "laboratory_complexes": 1,
                     "hostel_blocks": {"boys": 3, "girls": 1},
                     "under_construction": {
-                        "academic_block_2": true,
-                        "additional_hostel_blocks": true,
+                        "academic_block_2": "true",
+                        "additional_hostel_blocks": "true",
                     },
                 },
             },
